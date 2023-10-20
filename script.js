@@ -20,51 +20,55 @@ const marco = {
     name: "Marco",
     lastName: "Rossi",
     isAmbassador: true,
-    prices:  [34, 5, 32, 37, 9],
+    prices:  [34, 55, 32],
   }
   
   const paul = {
     name: "Paul",
     lastName: "Flynn",
     isAmbassador: false,
-    prices:  [34, 5, 2, 37, 29],
+    prices:  [34, 5, 2],
   }
   
   const amy = {
     name: "Amy",
     lastName: "Reed",
     isAmbassador: false,
-    prices:  [34, 40, 12, 7, 9],
+    prices:  [34, 40, 12],
   }
   const enrico = {
     name: "Enrico",
     lastName: "Brignano",
     isAmbassador: false,
-    prices:  [34, 3, 12, 7, 9],
+    prices:  [34, 53, 72],
   }
   const carlo = {
     name: "Carlo",
     lastName: "Verdone",
     isAmbassador: true,
-    prices:  [45, 3, 1, 15, 8],
+    prices:  [45, 3, 11],
   }
 
   const shippingCost = 50
   const shippingCostPlafond = 100
 
   let totale 
-  let carrello 
-  let utenti = [
-    
-  ]
-  let ambassador =  [
-
-  ]
+  let carrello = 0
+  let utenti = []
+  let ambassador =  []
   utenti.push(marco,paul,amy,enrico,carlo)
+
   let utenteCheEffettuaLAcquisto = enrico  //cambia il valore qui per provare se il tuo algoritmo funziona!
 
   //CALCOLO IL carrello
-  carrello = utenti[utenti.indexOf(utenteCheEffettuaLAcquisto)].prices.reduce((acc, valore) => acc + valore, 0);
+  
+  for (let c = 0; c < utenti[utenti.indexOf(utenteCheEffettuaLAcquisto)].prices.length; c++) {
+
+    carrello = carrello + utenti[utenti.indexOf(utenteCheEffettuaLAcquisto)].prices[c]
+    //carrello = utenti[utenti.indexOf(utenteCheEffettuaLAcquisto)].prices.reduce((acc, valore) => acc + valore, 0);
+  }
+  console.log(carrello);
+
   totale = carrello
   //SE E' AMBASSADOR SCONTO
   utenti[utenti.indexOf(utenteCheEffettuaLAcquisto)].isAmbassador ? totale = totale * 0.7 : totale = totale
@@ -72,10 +76,9 @@ const marco = {
   if (totale <= shippingCostPlafond) {
     totale = totale + shippingCost
   }
-
+  console.log("---------------------------------------------------");
   console.log("Carrello di",utenteCheEffettuaLAcquisto.name,":",carrello,"Importo da pagare:",totale);
-  console.log("\n");
-
+  console.log("---------------------------------------------------");
 
   for (let i = 0; i < utenti.length; i++) {   
 
@@ -87,33 +90,4 @@ const marco = {
     }
   }
 console.log(ambassador);
-//  const prices = [34, 5, 2, 7, 9]
-//   const shippingCost = 50
-//   let utenteCheEffettuaLAcquisto = amy //cambia il valore qui per provare se il tuo algoritmo funziona!
-
-//   let utenti = [
-    
-//   ]
-//   let ambassador = {
-
-//   }
-// console.log(utenti);
-// utenti.push(marco,paul,amy)
-// console.log(utenti);
-
-
-//   let totale = 0
-//   for (let i = 0; i < prices.length; i++) {
-//         totale += prices[i]
-//   }
-// //   utenteCheEffettuaLAcquisto.isAmbassador ? true : totale = totale * 0.7 # <----  PERCHE' NON FUNZIONA?
-
-// if (utenteCheEffettuaLAcquisto.isAmbassador){
-//         totale = totale * 0.7 
-// }
-//   console.log(totale);
-//     totale <= 100
-//     totale ? totale = totale - shippingCost : totale = totale 
-
-//     console.log(totale);
 
